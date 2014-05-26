@@ -1,0 +1,22 @@
+get '/'
+post '/users/create'
+post '/sign_in'
+
+get '/users/:id/dashboard'
+get '/users/:id/agreements'
+get '/agreements'
+get '/users/:id/alerts'
+patch '/users/:id'
+patch '/users/:id/emails/'
+
+
+get '/agreements/new'
+post 'agreements/create'
+
+get '/agreements/:id'
+post '/agreements/:id/signatures/create'
+
+post 'users/signature_invite'
+post 'users/:id/web_sign/create'
+
+
