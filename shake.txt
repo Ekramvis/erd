@@ -1,22 +1,33 @@
-get '/'
-post '/users/create'
-post '/sign_in'
+# Sign Up or Sign In
+post '/users'                    #sign up route
+post '/sign_in'                  #login route for existing users
 
-get '/users/:id/dashboard'
-get '/users/:id/agreements'
-get '/agreements'
-get '/users/:id/alerts'
-patch '/users/:id'
-patch '/users/:id/emails/'
+# User Attributes and Emails
+get '/users/:id'                 #landing page once logged in
+get '/users/:id/edit'            #form for editing user model
+patch '/users/:id'               #update user model
+get '/users/:id/emails'          #list of emails for user
+get '/users/:id/emails/new'      #form for submitting new user email
+post '/users/:id/emails/'        #update user emails
 
+# Alerts
+get '/users/:id/alerts'          #list of alerts for user
+post '/users/:id/alerts'         #creates an alert for a user
 
-get '/agreements/new'
-post 'agreements/create'
+# Agreements
+get  '/agreements'                   #list of templated agreements
+post '/users/:id/agreements'         #creates a user agreement of a particular type
+get '/users/:id/agreements'          #list of started agreements for a user
+get '/users/:id/agreements/:id/edit' #form for editing draft-stage agreement
+patch '/users/:id/agreements/:id'    #update the terms of an agreement
+get '/agreements/:id'                #get the completed agreement, with signature blocks
 
-get '/agreements/:id'
-post '/agreements/:id/signatures/create'
+# Signatures
+get '/agreements/:id/signatures/new'  #form for adding signature to page
+post '/agreements/:id/signatures'     #create signature for agreement
+patch '/agreements/:id/signatures'    #update signature for agreement
 
-post 'users/signature_invite'
-post 'users/:id/web_sign/create'
-
-
+# Invites to Sign
+post '/users/signature_invite'           #creates user and email and sends invite to sign
+post '/users/:id/emails/:id/confirm'     #verifies an email for a user
+get '/agreements/:id/signatures/websign' #gets agreement with single signature block
